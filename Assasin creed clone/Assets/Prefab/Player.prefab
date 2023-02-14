@@ -1096,6 +1096,8 @@ GameObject:
   - component: {fileID: 1392670782516944220}
   - component: {fileID: 1392670782516944219}
   - component: {fileID: 1392670782516944218}
+  - component: {fileID: 543450651699553661}
+  - component: {fileID: 543450651699553662}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1154,14 +1156,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 6
   cameraController: {fileID: 0}
-  _rotSpeed: 500
+  RotSpeed: 500
+  EnvironmentChecker: {fileID: 543450651699553662}
   PlayerAnimator: {fileID: 1392670782516944220}
   CC: {fileID: 1392670782516944218}
   CheckSurfaceRadius: 0.2
-  SurfaceCheackOffset: {x: 0, y: 0.15, z: 0.06}
+  SurfaceCheackOffset: {x: 0, y: 0.06, z: 0.06}
   SurfaceLayer:
     serializedVersion: 2
     m_Bits: 128
+  PlayerOnLedge: 0
   FallingSpeed: 0
   moveDir: {x: 0, y: 0, z: 0}
 --- !u!143 &1392670782516944218
@@ -1178,10 +1182,53 @@ CharacterController:
   m_Height: 1.39
   m_Radius: 0.19
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.18
   m_SkinWidth: 0.04
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.73, z: 0.06}
+--- !u!114 &543450651699553661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690367169426185628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee89af3258bc394a9020326aa621f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environmentChecker: {fileID: 543450651699553662}
+  AutoJumpHeightLimit: 2
+  PlayerController: {fileID: 1392670782516944219}
+  animator: {fileID: 1392670782516944220}
+  jumpDownAction: {fileID: 11400000, guid: 13fab67463385164a8d0210510a6b132, type: 2}
+  NewParkourActions:
+  - {fileID: 11400000, guid: f708afc030082614ba468ba2cd4806d7, type: 2}
+  - {fileID: 11400000, guid: ea78b8698617478439fdee2f9abc6fd0, type: 2}
+  - {fileID: 11400000, guid: 904c5e83350d00645abec2419caea2c1, type: 2}
+  - {fileID: 11400000, guid: 5213ebffbacca0f4781aea23cb739bb0, type: 2}
+  - {fileID: 11400000, guid: be4339c41470e7b45923bd0c47aba60b, type: 2}
+--- !u!114 &543450651699553662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690367169426185628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cad6ab9719d2a34fa4a6a23d6e81abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayOffset: {x: 0, y: 0.2, z: 0}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  rayLength: 0.9
+  heightRayLength: 6
+  ledgeRayLength: 11
+  ledgeRayHeightThreshold: 0.76
 --- !u!1 &5813063398678533920
 GameObject:
   m_ObjectHideFlags: 0

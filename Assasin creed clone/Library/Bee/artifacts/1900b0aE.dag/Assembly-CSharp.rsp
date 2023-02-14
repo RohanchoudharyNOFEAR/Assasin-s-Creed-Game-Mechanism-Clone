@@ -356,6 +356,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Camera/CameraController.cs"
 "Assets/Scripts/Helper/EnvironmentChecker.cs"
+"Assets/Scripts/Helper/NewParkourAction.cs"
+"Assets/Scripts/Player/ControlFallingMovement.cs"
 "Assets/Scripts/Player/ParkourController.cs"
 "Assets/Scripts/Player/PlayerController.cs"
 -langversion:9.0
