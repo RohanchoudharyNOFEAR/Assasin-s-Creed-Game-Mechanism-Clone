@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Shootable
   - Barrier
   - ShortWall
   layers:
@@ -14,11 +15,11 @@ TagManager:
   - Water
   - UI
   - Player
-  - Obstical
-  - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - Lighting
+  - Ground
+  - Postprocessing
+  - Knight
   - 
   - 
   - 
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
