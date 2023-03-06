@@ -8,13 +8,15 @@ public class GrenadeThrower : MonoBehaviour
     public Transform grenadeArea;
     public GameObject grenadePrefab;
     public Animator anim;
+    public GameManager Gm;
     private void Update()
     {
-       // if (Input.GetMouseButtonDown(0))
-      //  {
+        if (Input.GetMouseButtonDown(0) && Gm.NumberofGrenades>0)
+       {
             //function
-       //     StartCoroutine(GrenadeAnim());
-       // }
+           StartCoroutine(GrenadeAnim());
+            Gm.NumberofGrenades -= 1;
+        }
     }
 
     void ThrowGrenade()

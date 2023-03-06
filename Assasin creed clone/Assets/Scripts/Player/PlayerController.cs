@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Player Health & Energy")]
+    private float playerHealth = 200f;
+    public float presentHealth;
+    private float playerEnergy = 100f;
+    public float presentEnergy;
+    public HealthBar healthbar;
+    public EnergyBar energybar;
+    public GameObject DamageIndicator;
+
     [Header("Player Movement")]
     public float movementSpeed = 3f;
     public CameraController cameraController;
@@ -34,10 +43,40 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-
+        presentHealth = playerHealth;
+        presentEnergy = playerEnergy;
+        healthbar.GiveFullHealth(presentHealth);
+        energybar.GiveFullEnergy(presentEnergy);
     }
     private void Update()
     {
+        if (presentEnergy <= 0)
+        {
+            movementSpeed = 2f;
+
+            if (!Input.GetButton("Horizontal") || !Input.GetButton("Vertical"))
+            {
+                PlayerAnimator.SetFloat("movementValue", 0f);
+            }
+
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            {
+                PlayerAnimator.SetFloat("movementValue", 0.5f);
+                StartCoroutine(setEnergy());
+            }
+        }
+
+        if (presentEnergy >= 1)
+        {
+            movementSpeed = 5f;
+        }
+
+        if (PlayerAnimator.GetFloat("movementValue") >= 0.9999)
+        {
+            playerEnergyDecrease(0.02f);
+        }
+
+
 
         surfaceCheck();
         if (!playerControl)
@@ -133,6 +172,47 @@ public class PlayerController : MonoBehaviour
             velocity = Vector3.zero;
             moveDir = Vector3.zero;
         }
+    }
+
+
+    public void playerHitDamage(float takeDamage)
+    {
+      
+        presentHealth -= takeDamage;
+        healthbar.SetHealth(presentHealth);
+        StartCoroutine(showDamage());
+
+        if (presentHealth <= 0)
+        {
+            PlayerDie();
+        }
+    }
+
+    private void PlayerDie()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Object.Destroy(gameObject, 1.0f);
+    }
+
+    public void playerEnergyDecrease(float energyDecrease)
+    {
+        presentEnergy -= energyDecrease;
+        energybar.SetEnergy(presentEnergy);
+    }
+
+    IEnumerator setEnergy()
+    {
+        presentEnergy = 0f;
+        yield return new WaitForSeconds(5f);
+        energybar.GiveFullEnergy(presentEnergy);
+        presentEnergy = 100f;
+    }
+
+    IEnumerator showDamage()
+    {
+        DamageIndicator.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        DamageIndicator.SetActive(false);
     }
 
 

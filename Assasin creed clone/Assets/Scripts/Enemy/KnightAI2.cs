@@ -116,7 +116,7 @@ public class KnightAI2 : MonoBehaviour
 
             if (playerScript != null)
             {
-               // playerScript.playerHitDamage(giveDamage);
+                playerScript.playerHitDamage(giveDamage);
             }
         }
 

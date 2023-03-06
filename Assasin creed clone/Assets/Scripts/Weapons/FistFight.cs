@@ -12,6 +12,7 @@ public class FistFight : MonoBehaviour
     public float attackRadius;
     public LayerMask knightLayer;
     public PlayerController playerCon;
+    public Inventory Inventory;
 
     [SerializeField] Transform LeftHandPunch;
     [SerializeField] Transform RightHandPunch;
@@ -36,6 +37,9 @@ public class FistFight : MonoBehaviour
             Debug.Log("Fist Fight mode OFF");
             playerCon.movementSpeed = 5f;
             anim.SetBool("FistFightActive", false);
+            Inventory.fistFightMode = false;
+            Timer = 0;
+            this.gameObject.GetComponent<FistFight>().enabled = false;
         }
         FistfightModes();
     }

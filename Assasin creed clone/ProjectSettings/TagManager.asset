@@ -7,6 +7,12 @@ TagManager:
   - Shootable
   - Barrier
   - ShortWall
+  - Sword
+  - Grenade
+  - Bazooka
+  - Health
+  - Rifle
+  - Energy
   layers:
   - Default
   - TransparentFX

@@ -17,10 +17,7 @@ public class SingleMeleeAttack : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            anim.SetBool("SingleHandAttackActive", true);
-        }
+        
        
         SingleMeleeModes();
     }
